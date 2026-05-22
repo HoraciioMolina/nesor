@@ -1,0 +1,21 @@
+{
+  "name": "@nesor-examples/express-postgres",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Minimal example consuming nesor with Prisma + PostgreSQL.",
+  "type": "module",
+  "scripts": {
+    "generate": "prisma generate",
+    "build": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@nesor/mapper": "workspace:*",
+    "@prisma/client": "6.19.3",
+    "nesor": "workspace:*"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "prisma": "^6.0.0",
+    "typescript": "^5.6.3"
+  }
+}

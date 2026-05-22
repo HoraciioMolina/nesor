@@ -1,0 +1,53 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+generator nesor {
+  provider         = "nesor"
+  output           = "../src/generated/entities"
+  includeRelations = "byVariant"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum StatusA {
+  Active
+  Archived
+}
+
+/// A primary domain entity in this example.
+/// @nesor-variant Compact include=id,name,status
+/// @nesor-variant WithChildren withRelations=children
+model ModelA {
+  /// @nesor-brand IdA
+  id           String   @id @default(uuid())
+  name         String
+  count        Int      @default(0)
+  isActive     Boolean
+  /// @nesor-rename createdAtIso
+  createdAt    DateTime @default(now())
+  status       StatusA
+  tags         String[]
+  optional     String?
+  /// @nesor-secret
+  apiKey       String
+  /// @nesor-exclude
+  internalNote String
+  children     ModelB[]
+}
+
+/// A child entity.
+model ModelB {
+  id       String  @id @default(uuid())
+  label    String
+  parentId String
+  parent   ModelA  @relation(fields: [parentId], references: [id])
+}
+
+/// @nesor-skip
+model InternalBookkeeping {
+  id String @id @default(uuid())
+}

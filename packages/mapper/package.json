@@ -1,0 +1,36 @@
+{
+  "name": "@nesor/mapper",
+  "version": "0.1.1",
+  "description": "Optional, zero-opinion runtime helper for mapping Prisma rows to Nesor-generated entities using EntityMeta.",
+  "keywords": ["nesor", "prisma", "mapper", "entity"],
+  "license": "MIT",
+  "author": "Horacio Molina <horaciiomolina@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HoraciioMolina/nesor.git",
+    "directory": "packages/mapper"
+  },
+  "homepage": "https://github.com/HoraciioMolina/nesor/tree/main/packages/mapper#readme",
+  "bugs": "https://github.com/HoraciioMolina/nesor/issues",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": ["dist", "README.md", "LICENSE"],
+  "engines": {
+    "node": ">=20"
+  },
+  "peerDependencies": {
+    "nesor": "workspace:^"
+  },
+  "devDependencies": {
+    "nesor": "workspace:*",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.4"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "lint": "biome check .",
+    "prepublishOnly": "node ./scripts/check-no-workspace-protocol.mjs"
+  }
+}

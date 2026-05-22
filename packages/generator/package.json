@@ -1,0 +1,50 @@
+{
+  "name": "nesor",
+  "version": "0.1.1",
+  "description": "Generate clean, modular TypeScript domain entities from your Prisma schema. One file per model, doc-comment-driven exclusion, variants, and static metadata for your own mappers.",
+  "keywords": [
+    "prisma",
+    "prisma-generator",
+    "typescript",
+    "entities",
+    "ddd",
+    "clean-architecture",
+    "hexagonal"
+  ],
+  "license": "MIT",
+  "author": "Horacio Molina <horaciiomolina@gmail.com>",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HoraciioMolina/nesor.git",
+    "directory": "packages/generator"
+  },
+  "homepage": "https://github.com/HoraciioMolina/nesor#readme",
+  "bugs": "https://github.com/HoraciioMolina/nesor/issues",
+  "type": "module",
+  "main": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "bin": {
+    "nesor": "./dist/bin.js"
+  },
+  "files": ["dist", "README.md", "LICENSE"],
+  "engines": {
+    "node": ">=20"
+  },
+  "dependencies": {
+    "@prisma/generator-helper": "^6.0.0",
+    "prisma": "^6.0.0",
+    "ts-morph": "^23.0.0"
+  },
+  "devDependencies": {
+    "@types/node": "^22.9.0",
+    "typescript": "^5.6.3",
+    "vitest": "^2.1.4"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "lint": "biome check .",
+    "prepublishOnly": "node ./scripts/check-no-workspace-protocol.mjs"
+  }
+}
